@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KuisonerController;
 use App\Http\Controllers\IsiKuisonerController;
 use App\Http\Controllers\GrafikController;
+use App\Http\Controllers\GformController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,9 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('jawaban', IsiKuisonerController::class);
         Route::get('jawaban/create/{id}', [IsiKuisonerController::class, 'create']);
         Route::resource('grafik', GrafikController::class);
+    });
+
+    Route::prefix('dashboard')->name('user.dashboard.')->group(function () {
+        Route::resource('gform', GformController::class);
     });
 });

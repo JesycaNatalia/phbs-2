@@ -13,7 +13,7 @@ class GformController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard.gform.index');
+        return view('user.dashboard.gformkuisoner.index');
     }
 
     /**
