@@ -20,16 +20,18 @@
 <div class="container">
     <div class="col">
         <div class="row">
-            @php $index=1 @endphp
+            <form action="route('user.dashboard.kirim-form')" method="POST">
+            @php $index=0 @endphp
             @foreach($kuisoners as $kuisoner)
+                @php $index++ @endphp
                 <table>
                     <tr>
-                        <td>{{ $index++ }}. {{ $kuisoner->pertanyaan }}</td>
+                        <td>{{ $index }}. {{ $kuisoner->pertanyaan }}</td>
                     </tr>
                     <tr>
                         <td>
                             @foreach($kuisoner->jawaban as $jawaban)
-                            <p><input type='radio' name='{{$kuisoner->pertanyaan}}' value='{{$jawaban->jawaban}}' /> {{$jawaban->jawaban}}</p>
+                            <p><input type='radio' name='kuisoner{{$index}}' value='{{$jawaban->skor}}' required/> {{$jawaban->jawaban}}</p>
                             @endforeach
                         </td>
                     </tr>
@@ -54,7 +56,6 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </div>
                                 </div>
@@ -65,6 +66,9 @@
                 @endif
             </div>
             @endforeach
+            <input type="text" name="total_skor" id="total_skor" value="0">
+            <button class="btn btn-block btn-info">Kirim</button>
+            </form>
         </div>
     </div>
 </div>
@@ -72,6 +76,17 @@
 
 @section('script')
 <script>
+
+    let total_skor = 0
+    @php $index=0 @endphp
+    @foreach($kuisoners as $kuisoner)
+        @php $index++ @endphp
+        $('input[type=radio][name=kuisoner{{$index}}]').change(function() {
+            total_skor = total_skor + parseFloat($('input[type=radio][name=kuisoner{{$index}}]').val());
+            $("#total_skor").val(total_skor);
+        });
+    @endforeach
+
     $(document).on("click", ".deleteButton", function() {
         let id = $(this).val();
 

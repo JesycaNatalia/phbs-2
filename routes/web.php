@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KuisonerController;
 use App\Http\Controllers\IsiKuisonerController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ResponUserController;
 use App\Http\Controllers\GrafikController;
 use App\Http\Controllers\GformController;
 
@@ -36,5 +36,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('dashboard')->name('user.dashboard.')->group(function () {
         Route::resource('gform', GformController::class);
+        Route::post('kirim-form', [ResponUserController::class, 'store']);
     });
 });
