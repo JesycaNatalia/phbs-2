@@ -1,4 +1,4 @@
-@extends('admin.layouts.dashboard')
+@extends('user.layouts.dashboard')
 
 @section('title', 'Tabel Jawaban')
 
@@ -12,7 +12,6 @@
         <label for="exampleInputEmail1" class="form-label">Apakah kamu manusia</label>
         <button type="submit" class="btn btn-primary">YA</button>
         <button type="submit" class="btn btn-primary">TIDAK</button>
-        // kalo button di klik bakal muncul ini, tapi kalo mau langsung tampil semua juga gapap
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Jarang</label>

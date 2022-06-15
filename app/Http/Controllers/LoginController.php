@@ -24,11 +24,11 @@ class LoginController extends Controller
             return redirect()->back()->with('ERR', 'Password yang Anda masukkan salah.');
         }
 
+        $kuisoner['kuisoners'] = Kuisoner::get();
         if (Auth::user()->role == 'admin') {
-            $kuisoner['kuisoners'] = Kuisoner::get();
             return view('admin.dashboard.kuisoner.index', $kuisoner);
         } else {
-            // return redirect()->route('admin.dashboard.products.index');
+            return redirect()->route('kuisoner');
         }
     }
 
@@ -36,6 +36,6 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('index')->with('OK', 'Berhasil logout');
+        return redirect()->route('login')->with('OK', 'Berhasil logout');
     }
 }

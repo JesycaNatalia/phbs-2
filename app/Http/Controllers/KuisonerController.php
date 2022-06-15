@@ -93,8 +93,11 @@ class KuisonerController extends Controller
      * @param  \App\Models\Kuisoner  $kuisoner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kuisoner $kuisoner)
+    public function destroy($id)
     {
-        //
+        $kuisoner = Kuisoner::findOrFail($id);
+        $kuisoner->delete();
+
+        return redirect()->back()->with("OK", "Kuisoner berhasil di hapus.");
     }
 }

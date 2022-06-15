@@ -91,8 +91,11 @@ class IsiKuisonerController extends Controller
      * @param  \App\Models\IsiKuisoner  $isiKuisoner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IsiKuisoner $isiKuisoner)
+    public function destroy($id)
     {
-        //
+        $kuisoner = IsiKuisoner::findOrFail($id);
+        $kuisoner->delete();
+
+        return redirect()->back()->with("OK", "Jawaban berhasil di hapus.");
     }
 }

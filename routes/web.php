@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KuisonerController;
 use App\Http\Controllers\IsiKuisonerController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +25,11 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::middleware(['auth'])->group(function () {
 
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-    Route::resource('home', KuisonerController::class);
     Route::prefix('dashboard')->name('admin.dashboard.')->group(function () {
         Route::resource('kuisoner', KuisonerController::class);
         Route::resource('jawaban', IsiKuisonerController::class);
         Route::get('jawaban/create/{id}', [IsiKuisonerController::class, 'create']);
     });
+
+    Route::get('kuisoner', [UserController::class, 'check'])->name('kuisoner');
 });
