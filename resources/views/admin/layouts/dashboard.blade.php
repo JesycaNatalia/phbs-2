@@ -13,14 +13,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description"
-        content="Frest admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="admin template, Frest admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="description" content="Frest admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Frest admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>@yield('title') - PHBS</title>
-    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/vendors.min.css">
@@ -29,10 +26,8 @@
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/pickers/pickadate/pickadate.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/pickers/daterange/daterangepicker.css">
-    <link rel="stylesheet" type="text/css"
-        href="/app-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css"
-        href="/app-assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -72,12 +67,9 @@
 
 <!-- BEGIN: Body-->
 
-<body
-    class="vertical-layout semi-dark-layout 2-columns navbar-sticky footer-static pace-done menu-expanded vertical-menu-modern"
-    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" style="overflow: auto;">
+<body class="vertical-layout semi-dark-layout 2-columns navbar-sticky footer-static pace-done menu-expanded vertical-menu-modern" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" style="overflow: auto;">
     <div class="pace  pace-inactive">
-        <div class="pace-progress" data-progress-text="100%" data-progress="99"
-            style="transform: translate3d(100%, 0px, 0px);">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
             <div class="pace-progress-inner"></div>
         </div>
         <div class="pace-activity"></div>
@@ -91,17 +83,14 @@
                 <div class="navbar-collapse" id="navbar-mobile">
                     <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item mobile-menu d-xl-none mr-auto"><a
-                                    class="nav-link nav-menu-main menu-toggle hidden-xs is-active"
-                                    href="javascript:void(0);"><i class="ficon bx bx-menu"></i></a></li>
+                            <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs is-active" href="javascript:void(0);"><i class="ficon bx bx-menu"></i></a></li>
                         </ul>
 
 
                     </div>
                     <ul class="nav navbar-nav float-right">
                         <li class="dropdown dropdown-user nav-item">
-                            <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:void(0);"
-                                data-toggle="dropdown">
+                            <a class="dropdown-toggle nav-link dropdown-user-link" href="javascript:void(0);" data-toggle="dropdown">
                                 <div class="user-nav d-sm-flex d-none">
                                     <span class="user-name text-capitalize">{{ Auth::user()->nama }}</span>
                                 </div>
@@ -121,8 +110,7 @@
 
 
     <!-- BEGIN: Main Menu-->
-    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow expanded" data-scroll-to-active="true"
-        style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow expanded" data-scroll-to-active="true" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
         <div class="navbar-header expanded">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="javascript:;">
@@ -131,27 +119,31 @@
                 <li class="nav-item nav-toggle">
                     <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse">
                         <i class="bx-x d-block d-xl-none font-medium-4 primary toggle-icon bx-disc bx"></i>
-                        <i class="toggle-icon bx-disc font-medium-4 d-none d-xl-block primary bx"
-                            data-ticon="bx-disc"></i>
+                        <i class="toggle-icon bx-disc font-medium-4 d-none d-xl-block primary bx" data-ticon="bx-disc"></i>
                     </a>
                 </li>
             </ul>
         </div>
         <div class="shadow-bottom"></div>
         <div class="main-menu-content ps">
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation"
-                data-icon-style="lines">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
                 <li class="nav-item has-sub">
                     <a href="#">
-                        <i class="menu-livicon livicon-evo-holder" data-icon="notebook"
-                            style="visibility: visible; width: 60px;"></i>
+                        <i class="menu-livicon livicon-evo-holder" data-icon="notebook" style="visibility: visible; width: 60px;"></i>
                         <span class="menu-title text-truncate" data-i18n="Driver">Kuisoner</span>
                     </a>
                     <ul class="menu-content" style="">
-                        <li class=""><a class="d-flex align-items-center"
-                                href="{{ route('admin.dashboard.kuisoner.index') }}"><i
-                                    class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate"
-                                    data-i18n="Tabel Driver">Tabel Kuisoner</span></a>
+                        <li class=""><a class="d-flex align-items-center" href="{{ route('admin.dashboard.kuisoner.index') }}"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="Tabel Driver">Tabel Kuisoner</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-sub">
+                    <a href="#">
+                        <i class="menu-livicon livicon-evo-holder" data-icon="notebook" style="visibility: visible; width: 60px;"></i>
+                        <span class="menu-title text-truncate" data-i18n="Driver">Pantauan</span>
+                    </a>
+                    <ul class="menu-content" style="">
+                        <li class=""><a class="d-flex align-items-center" href="{{ route('admin.dashboard.grafik.index') }}"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="Tabel Driver">Grafik</span></a>
                         </li>
                     </ul>
                 </li>
@@ -178,19 +170,16 @@
     </div>
     <!-- END: Content-->
 
-    <div class="sidenav-overlay"
-        style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+    <div class="sidenav-overlay" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
     </div>
-    <div class="drag-target"
-        style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+    <div class="drag-target" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
     </div>
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
         <p class="clearfix mb-0">
             <span class="float-left d-inline-block">2021 © All rights reserved</span>
-            <button class="btn btn-primary btn-icon scroll-top" type="button"><i
-                    class="bx bx-up-arrow-alt"></i></button>
+            <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="bx bx-up-arrow-alt"></i></button>
         </p>
     </footer>
     <!-- END: Footer-->
