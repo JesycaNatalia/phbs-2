@@ -28,7 +28,7 @@ class LoginController extends Controller
         if (Auth::user()->role == 'admin') {
             return view('admin.dashboard.kuisoner.index', $kuisoner);
         } else {
-            return redirect()->route('kuisoner');
+            return redirect()->route('user.dashboard.gform.index');
         }
     }
 

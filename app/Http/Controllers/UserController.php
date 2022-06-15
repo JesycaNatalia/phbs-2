@@ -10,6 +10,6 @@ class UserController extends Controller
     {
         // dd('anjing memek ngentot asu');
         //nanti bikin if nokk
-        return view('user.dashboard.gform.index');
+        return view('user.dashboard.gformkuisoner.index');
     }
 }

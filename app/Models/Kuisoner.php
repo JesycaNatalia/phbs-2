@@ -13,4 +13,9 @@ class Kuisoner extends Model
         'pertanyaan',
         'status_pertanyaan',
     ];
+
+    public function jawaban()
+    {
+        return $this->hasMany('App\Models\IsiKuisoner');
+    }
 }

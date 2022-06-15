@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kuisoner;
 use Illuminate\Http\Request;
 
 class GformController extends Controller
@@ -13,7 +14,8 @@ class GformController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard.gform.index');
+        $kuisoner['kuisoners'] = Kuisoner::get();
+        return view('user.dashboard.gformkuisoner.index', $kuisoner);
     }
 
     /**

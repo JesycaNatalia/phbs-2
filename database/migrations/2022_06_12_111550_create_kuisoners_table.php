@@ -17,6 +17,7 @@ class CreateKuisonersTable extends Migration
             $table->id();
             $table->string('pertanyaan');
             $table->string('status_pertanyaan');
+            $table->text('penjelasan')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
