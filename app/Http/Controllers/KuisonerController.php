@@ -42,7 +42,7 @@ class KuisonerController extends Controller
             'status_pertanyaan' => $request->status_pertanyaan,
         ]);
 
-        return redirect()->back()->with("OK", "Berhasil ditambahkan.");
+        return redirect(route('admin.dashboard.kuisoner.index'))->with("OK", "Berhasil ditambahkan.");
     }
 
     /**
