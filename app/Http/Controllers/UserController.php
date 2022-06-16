@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function check()
     {
-        // dd('anjing memek ngentot asu');
+        // dd('anjing ngentot asu');
         //nanti bikin if nokk
         return view('user.dashboard.gformkuisoner.index');
     }
