@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ResponUser extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'bulan_id',
+        'user_id',
+        'total_skor',
+    ];
 }

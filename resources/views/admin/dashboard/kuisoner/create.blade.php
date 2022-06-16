@@ -58,6 +58,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-6">
+                            <div class="form-group mb-50">
+                                <div class="form-group mb-50">
+                                    <label class="text-bold-600">Penjelasan</label>
+                                    <textarea name="penjelasan" class="form-control" cols="30" rows="10"
+                                        placeholder="e.g: Cuci tangan dengan sabun adalah kebutuhan"></textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @csrf

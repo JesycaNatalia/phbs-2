@@ -11,6 +11,7 @@ class Kuisoner extends Model
 
     protected $fillable = [
         'pertanyaan',
+        'penjelasan',
         'status_pertanyaan',
     ];
 

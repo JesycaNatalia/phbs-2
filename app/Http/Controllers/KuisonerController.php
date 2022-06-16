@@ -40,6 +40,7 @@ class KuisonerController extends Controller
         Kuisoner::create([
             'pertanyaan' => $request->pertanyaan,
             'status_pertanyaan' => $request->status_pertanyaan,
+            'penjelasan' => $request->penjelasan ?? ''
         ]);
 
         return redirect(route('admin.dashboard.kuisoner.index'))->with("OK", "Berhasil ditambahkan.");

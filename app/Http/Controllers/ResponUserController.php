@@ -36,11 +36,11 @@ class ResponUserController extends Controller
      */
     public function store(Request $request)
     {
-        ResponUser::create([
-            'bulan_id' => $request->bulan_id,
-            'user_Id' => Auth::user()->id,
-            'total_skor' => $request->total_skor
-        ]);
+        // ResponUser::create([
+        //     'bulan_id' => $request->bulan_id,
+        //     'user_Id' => Auth::user()->id,
+        //     'total_skor' => $request->total_skor
+        // ]);
 
         return redirect(route('user.dashboard.gform.index'))->with("OK", "Berhasil ditambahkan.");
     }

@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class JawabanUser extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'bulan_id',
+        'kuisoner_id',
+        'isi_kuisoner_id',
+        'user_id',
+    ];
+
+    public function isi_kuisoner()
+    {
+        return $this->belongsTo('App\Models\IsiKuisoner');
+    }
 }

@@ -14,7 +14,8 @@ class BulanController extends Controller
      */
     public function index()
     {
-        //
+        $bulan['bulans'] = Bulan::get();
+        return view('admin.dashboard.bulan.index', $bulan);
     }
 
     /**
@@ -24,7 +25,7 @@ class BulanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboard.bulan.create');
     }
 
     /**
@@ -35,7 +36,12 @@ class BulanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Bulan::create([
+            'bulan' => $request->bulan,
+            'tahun' => $request->tahun,
+        ]);
+
+        return redirect(route('admin.dashboard.bulan.index'))->with("OK", "Berhasil ditambahkan.");
     }
 
     /**
@@ -55,9 +61,11 @@ class BulanController extends Controller
      * @param  \App\Models\Bulan  $bulan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bulan $bulan)
+    public function edit($id)
     {
-        //
+        $bulan['bulan'] = Bulan::findOrFail($id);
+
+        return view('admin.dashboard.bulan.edit', $bulan);
     }
 
     /**
@@ -67,9 +75,15 @@ class BulanController extends Controller
      * @param  \App\Models\Bulan  $bulan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bulan $bulan)
+    public function update(Request $request, $id)
     {
-        //
+        $bulan = Bulan::findOrFail($id);
+        $bulan->update([
+            'bulan' => $request->bulan,
+            'tahun' => $request->tahun,
+        ]);
+
+        return redirect()->back()->with("OK", "Berhasil diubah.");
     }
 
     /**
@@ -78,8 +92,11 @@ class BulanController extends Controller
      * @param  \App\Models\Bulan  $bulan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bulan $bulan)
+    public function destroy($id)
     {
-        //
+        $bulan = Bulan::findOrFail($id);
+        $bulan->delete();
+
+        return redirect()->back()->with("OK", "Bulan berhasil di hapus.");
     }
 }
