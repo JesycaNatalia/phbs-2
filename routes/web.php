@@ -8,6 +8,7 @@ use App\Http\Controllers\BulanController;
 use App\Http\Controllers\GrafikController;
 use App\Http\Controllers\GformController;
 use App\Http\Controllers\UlaporanKuisonerController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +40,6 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('dashboard')->name('user.dashboard.')->group(function () {
         Route::resource('gform', GformController::class);
         Route::resource('laporankuisoner', UlaporanKuisonerController::class);
+        Route::resource('dashboard', DashboardController::class);
     });
 });
