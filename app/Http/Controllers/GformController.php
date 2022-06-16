@@ -24,7 +24,7 @@ class GformController extends Controller
             $kuisoner['kuisoners'] = Kuisoner::get();
             return view('user.dashboard.gformkuisoner.index', $kuisoner);
         } else {
-            echo 'Kamu udah ngisi'; //nanti dibuatin view sendiri
+            return view('user.dashboard.gformkuisoner.detail2');
         }
     }
 
@@ -71,7 +71,7 @@ class GformController extends Controller
             'total_skor' => $total_skor,
         ]);
 
-        echo "Pengisian Berhasil!"; //buatin view lagi untuk ini
+        return view('user.dashboard.gformkuisoner.detail');
 
         // return redirect(route('user.dashboard.gform.index'))->with("OK", "Berhasil ditambahkan.");
     }
