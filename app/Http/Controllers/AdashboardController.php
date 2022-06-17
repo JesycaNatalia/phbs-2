@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UlaporanKuisonerController extends Controller
+class AdashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class UlaporanKuisonerController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard.pantauan.index');
+        return view('admin.dashboard.dashboard.index');
     }
 
     /**
@@ -45,6 +45,7 @@ class UlaporanKuisonerController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**

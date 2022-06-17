@@ -50,9 +50,10 @@ class BulanController extends Controller
      * @param  \App\Models\Bulan  $bulan
      * @return \Illuminate\Http\Response
      */
-    public function show(Bulan $bulan)
+    public function show($id)
     {
-        //
+        $bulan['bulan'] = Bulan::findOrFail($id);
+        return view('admin.dashboard.bulan.show', $bulan);
     }
 
     /**
@@ -64,7 +65,6 @@ class BulanController extends Controller
     public function edit($id)
     {
         $bulan['bulan'] = Bulan::findOrFail($id);
-
         return view('admin.dashboard.bulan.edit', $bulan);
     }
 

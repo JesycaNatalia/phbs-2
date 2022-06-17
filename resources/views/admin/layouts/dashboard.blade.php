@@ -128,6 +128,13 @@
         <div class="main-menu-content ps">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
                 <li class="nav-item">
+                    <a href="{{ route('admin.dashboard.adashboard.index') }}">
+                        <i class="menu-livicon livicon-evo-holder" data-icon="notebook" style="visibility: visible; width: 60px;"></i>
+                        <span class="menu-title text-truncate" data-i18n="Driver">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ route('admin.dashboard.bulan.index') }}">
                         <i class="menu-livicon livicon-evo-holder" data-icon="notebook" style="visibility: visible; width: 60px;"></i>
                         <span class="menu-title text-truncate" data-i18n="Driver">Bulan</span>
@@ -149,7 +156,7 @@
                         <span class="menu-title text-truncate" data-i18n="Driver">Pantauan</span>
                     </a>
                     <ul class="menu-content" style="">
-                        <li class=""><a class="d-flex align-items-center" href="{{ route('admin.dashboard.grafik.index') }}"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="Tabel Driver">Grafik</span></a>
+                        <li class=""><a class="d-flex align-items-center" href="{{ route('admin.dashboard.pantauan.index') }}"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="Tabel Driver">Laporan Bulanan</span></a>
                         </li>
                     </ul>
                 </li>

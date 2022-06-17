@@ -9,7 +9,8 @@ use App\Http\Controllers\GrafikController;
 use App\Http\Controllers\GformController;
 use App\Http\Controllers\UlaporanKuisonerController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\AdashboardController;
+use App\Http\Controllers\PantauanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('jawaban/create/{id}', [IsiKuisonerController::class, 'create']);
         Route::resource('grafik', GrafikController::class);
         Route::resource('bulan', BulanController::class);
+        Route::resource('pantauan', PantauanController::class);
+        Route::resource('adashboard', AdashboardController::class);
     });
 
     Route::prefix('dashboard')->name('user.dashboard.')->group(function () {

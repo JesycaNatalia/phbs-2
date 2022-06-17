@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class GrafikController extends Controller
+class PantauanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class GrafikController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.grafik.index');
+        return view('admin.dashboard.pantauan.index');
     }
 
     /**
@@ -45,7 +45,7 @@ class GrafikController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
     }
 
     /**

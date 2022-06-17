@@ -1,4 +1,4 @@
-@extends('user.layouts.udashboard')
+@extends('admin.layouts.dashboard')
 
 @section('title', 'Laporan')
 
@@ -34,18 +34,23 @@
                             <thead>
                                 <tr>
                                     <th style="width: 5%">No</th>
+                                    <th>Nama Kepala Keluarga</th>
+                                    <th>No KK</th>
                                     <th>Bulan</th>
                                     <th>Skor</th>
                                     <th>Status</th> <!-- //disini nanti status buat nentuin dia termasuk keluarga hidup bersih apa ngga -->
+                                    <a href="#"></a>
                                     <th class="text-center" style="width: 15%">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td></td>
-                                    <td>Januari</td>
-                                    <td>Januari</td>
-                                    <td>Januari</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <a href="" class="btn btn-info">Detail</a>
                                     </td>
@@ -92,12 +97,4 @@
 @endsection
 
 @section('script')
-<script>
-    $(document).on("click", ".deleteButton", function() {
-        let id = $(this).val();
-
-        $("#deleteForm").attr("action", "{{ route('admin.dashboard.bulan.index') }}/" + id)
-        $("#deleteModal").modal();
-    });
-</script>
 @endsection

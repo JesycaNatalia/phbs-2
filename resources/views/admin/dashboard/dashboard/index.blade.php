@@ -1,20 +1,32 @@
 @extends('admin.layouts.dashboard')
 
-@section('title', 'Grafik Pantauan')
+@section('title', 'Dashboard')
 
 @section('style')
 @endsection
 
 @section('content')
+
+<div class="card col-xl-11 col-md-6">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+        <center>
+            <h4> DASHBOARD ADMIN</h4>
+        </center>
+        <!-- jadi nanti ada pengkondisian disini, kalo udah ngisi berarti cardnya -->
+    </div>
+</div>
+
 <?php
 
 $dataPoints = array(
-    array("label" => "Chrome", "y" => 64.02),
-    array("label" => "Firefox", "y" => 12.55),
-    array("label" => "IE", "y" => 8.47),
-    array("label" => "Safari", "y" => 6.08),
-    array("label" => "Edge", "y" => 4.29),
-    array("label" => "Others", "y" => 4.59)
+    array("label" => "Januari", "y" => 64.02),
+    array("label" => "Februari", "y" => 12.55),
+    array("label" => "Maret", "y" => 8.47),
+    array("label" => "April", "y" => 6.08),
+    array("label" => "Mei", "y" => 4.29),
+    array("label" => "Juni", "y" => 4.59)
 )
 
 ?>
@@ -25,7 +37,7 @@ $dataPoints = array(
         var chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
             title: {
-                text: "Usage Share of Desktop Browsers"
+                text: "Total Pengisian Kuisoner Perbulan"
             },
             subtitles: [{
                 text: "November 2017"
@@ -50,12 +62,4 @@ $dataPoints = array(
 @endsection
 
 @section('script')
-<script>
-    $(document).on("click", ".deleteButton", function() {
-        let id = $(this).val();
-
-        $("#deleteForm").attr("action", "{{ route('admin.dashboard.jawaban.index') }}/" + id)
-        $("#deleteModal").modal();
-    });
-</script>
 @endsection

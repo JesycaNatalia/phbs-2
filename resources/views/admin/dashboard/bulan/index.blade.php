@@ -26,8 +26,7 @@
         <div class="card">
             <div class="card-header">
                 <p class="card-title font-weight-bold">Tabel Bulan</p>
-                <a style="float:right" class="btn btn-primary" href="{{ route('admin.dashboard.bulan.create') }}"><i
-                        class="bx bx-plus"></i><span class="menu-item text-truncate" data-i18n="Tambah Kuisioner">Tambah
+                <a style="float:right" class="btn btn-primary" href="{{ route('admin.dashboard.bulan.create') }}"><i class="bx bx-plus"></i><span class="menu-item text-truncate" data-i18n="Tambah Kuisioner">Tambah
                         Bulan</span></a>
             </div>
             <div class="card-body">
@@ -50,10 +49,9 @@
                                     <td>{{ $bulan->tahun }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="{{ route('admin.dashboard.bulan.edit', $bulan->id) }}"
-                                                class="btn btn-info">Edit</a>
-                                            <button class="btn btn-danger deleteButton"
-                                                value="{{ $bulan->id }}">Hapus</button>
+                                            <a href="{{ route('admin.dashboard.bulan.show', $bulan->id) }}" class="btn btn-warning">Detail</a>
+                                            <a href="{{ route('admin.dashboard.bulan.edit', $bulan->id) }}" class="btn btn-info">Edit</a>
+                                            <button class="btn btn-danger deleteButton" value="{{ $bulan->id }}">Hapus</button>
                                         </div>
                                     </td>
                                 </tr>
