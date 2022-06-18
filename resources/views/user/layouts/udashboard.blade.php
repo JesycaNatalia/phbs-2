@@ -127,6 +127,14 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content ps">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
+                <li class="nav-item">
+                    <a href="{{ route('user.dashboard.dashboard.index') }}">
+                        <i class="menu-livicon livicon-evo-holder" data-icon="notebook" style="visibility: visible; width: 60px;"></i>
+                        <span class="menu-title text-truncate" data-i18n="Driver">Dashboard</span>
+                    </a>
+                </li>
+
+
                 <li class="nav-item has-sub">
                     <a href="#">
                         <i class="menu-livicon livicon-evo-holder" data-icon="notebook" style="visibility: visible; width: 60px;"></i>
@@ -138,6 +146,16 @@
                     </ul>
                 </li>
 
+                <li class="nav-item has-sub">
+                    <a href="#">
+                        <i class="menu-livicon livicon-evo-holder" data-icon="notebook" style="visibility: visible; width: 60px;"></i>
+                        <span class="menu-title text-truncate" data-i18n="Driver">Pantauan</span>
+                    </a>
+                    <ul class="menu-content" style="">
+                        <li class=""><a class="d-flex align-items-center" href="{{ route('user.dashboard.laporankuisoner.index') }}"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="Tabel Driver">Laporan Kuisoner</span></a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
                 <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>

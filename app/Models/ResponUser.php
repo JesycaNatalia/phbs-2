@@ -14,4 +14,9 @@ class ResponUser extends Model
         'user_id',
         'total_skor',
     ];
+
+    public function bulan()
+    {
+        return $this->belongsTo('App\Models\Bulan');
+    }
 }

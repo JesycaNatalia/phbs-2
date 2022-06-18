@@ -1,6 +1,6 @@
-@extends('admin.layouts.dashboard')
+@extends('user.layouts.udashboard')
 
-@section('title', 'Tabel Bulan')
+@section('title', 'Laporan')
 
 @section('style')
 @endsection
@@ -9,12 +9,12 @@
 <div class="content-header row">
     <div class="content-header-left col-12 mb-2 mt-1">
         <div class="breadcrumbs-top">
-            <h5 class="content-header-title float-left pr-1 mb-0">Bulan</h5>
+            <h5 class="content-header-title float-left pr-1 mb-0">Pantauan</h5>
             <div class="breadcrumb-wrapper d-none d-sm-block">
                 <ol class="breadcrumb p-0 mb-0 pl-1">
                     <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active">Tabel Bulan
+                    <li class="breadcrumb-item active">Laporan Bulanan
                     </li>
                 </ol>
             </div>
@@ -25,9 +25,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <p class="card-title font-weight-bold">Tabel Bulan</p>
-                <a style="float:right" class="btn btn-primary" href="{{ route('admin.dashboard.bulan.create') }}"><i class="bx bx-plus"></i><span class="menu-item text-truncate" data-i18n="Tambah Kuisioner">Tambah
-                        Bulan</span></a>
+                <p class="card-title font-weight-bold">Tabel Laporan</p>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -36,23 +34,33 @@
                             <thead>
                                 <tr>
                                     <th style="width: 5%">No</th>
-                                    <th>Bulan</th>
                                     <th>Tahun</th>
+                                    <th>Bulan</th>
+                                    <th>Skor</th>
+                                    <th>Status</th> <!-- //disini nanti status buat nentuin dia termasuk keluarga hidup bersih apa ngga -->
                                     <th class="text-center" style="width: 15%">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($bulans as $bulan)
+                                @foreach($respon_users as $respon_user)
+                                @php 
+                                $total_skor = $respon_user->total_skor;
+                                $perbandingan = ($kuisoner * 3) / 2; //ini *3 karna 3 adalah skor tertinggi dan dibagi 2 untuk menghitung nilai tengahnya buat jadi pacuan sehat dan tidak
+                                @endphp
+                                {{-- kode diatas untuk menghitung nilai sehat dan tidak --}}
                                 <tr>
                                     <td></td>
-                                    <td>{{ $bulan->bulan }}</td>
-                                    <td>{{ $bulan->tahun }}</td>
+                                    <td>{{ $respon_user->bulan->tahun }}</td>
+                                    <td>{{ $respon_user->bulan->bulan }}</td>
+                                    <td>{{ $respon_user->total_skor }}</td>
+                                    <td>@if($total_skor > $perbandingan) 
+                                            Sehat 
+                                        @else 
+                                            Belum Sehat 
+                                        @endif
+                                    </td>
                                     <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="{{ route('admin.dashboard.bulan.show', $bulan->id) }}" class="btn btn-warning">Detail</a>
-                                            <a href="{{ route('admin.dashboard.bulan.edit', $bulan->id) }}" class="btn btn-info">Edit</a>
-                                            <button class="btn btn-danger deleteButton" value="{{ $bulan->id }}">Hapus</button>
-                                        </div>
+                                        <a href="" class="btn btn-info">Detail</a>
                                     </td>
                                 </tr>
                                 @endforeach

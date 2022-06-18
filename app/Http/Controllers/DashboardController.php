@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\ResponUser;
+use App\Models\Kuisoner;
 use App\Models\Bulan;
 use Illuminate\Http\Request;
 
-class BulanController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +17,16 @@ class BulanController extends Controller
      */
     public function index()
     {
-        $bulan['bulans'] = Bulan::get();
-        return view('admin.dashboard.bulan.index', $bulan);
+        $bulan = Bulan::orderBy('id', 'desc')->first();
+        $all_respon_user['all_respon_users'] = ResponUser::get();
+        // $respon_user['respon_users'] = ResponUser::where('user_id', Auth::user()->id)->get(); //ini gabisa dikirim di view karna $data cuma bisa 1
+        $kuisoner = Kuisoner::count();
+        $check_isi_bulan = ResponUser::where([['bulan_id', $bulan->id], ['user_id', Auth::user()->id]])->first(); //ngambil data respon user buat check berapa kali sudah ngisi
+        $status = '';
+        if ($check_isi_bulan == null) {
+            $status = 'Anda Belum Mengisi Kuisoner Bulan ' . $bulan->bulan . '!';
+        }
+        return view('user.dashboard.udashboard.index', $all_respon_user, compact('status', 'kuisoner'));
     }
 
     /**
@@ -25,7 +36,7 @@ class BulanController extends Controller
      */
     public function create()
     {
-        return view('admin.dashboard.bulan.create');
+        //
     }
 
     /**
@@ -36,67 +47,51 @@ class BulanController extends Controller
      */
     public function store(Request $request)
     {
-        Bulan::create([
-            'bulan' => $request->bulan,
-            'tahun' => $request->tahun,
-        ]);
-
-        return redirect(route('admin.dashboard.bulan.index'))->with("OK", "Berhasil ditambahkan.");
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Bulan  $bulan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $bulan['bulan'] = Bulan::findOrFail($id);
-        return view('admin.dashboard.bulan.show', $bulan);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Bulan  $bulan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $bulan['bulan'] = Bulan::findOrFail($id);
-        return view('admin.dashboard.bulan.edit', $bulan);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Bulan  $bulan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $bulan = Bulan::findOrFail($id);
-        $bulan->update([
-            'bulan' => $request->bulan,
-            'tahun' => $request->tahun,
-        ]);
-
-        return redirect()->back()->with("OK", "Berhasil diubah.");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Bulan  $bulan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $bulan = Bulan::findOrFail($id);
-        $bulan->delete();
-
-        return redirect()->back()->with("OK", "Bulan berhasil di hapus.");
+        //
     }
 }

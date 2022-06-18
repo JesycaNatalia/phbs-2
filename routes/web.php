@@ -4,11 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KuisonerController;
 use App\Http\Controllers\IsiKuisonerController;
-use App\Http\Controllers\ResponUserController;
 use App\Http\Controllers\BulanController;
 use App\Http\Controllers\GrafikController;
 use App\Http\Controllers\GformController;
-
+use App\Http\Controllers\UlaporanKuisonerController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdashboardController;
+use App\Http\Controllers\PantauanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,9 +36,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('jawaban/create/{id}', [IsiKuisonerController::class, 'create']);
         Route::resource('grafik', GrafikController::class);
         Route::resource('bulan', BulanController::class);
+        Route::resource('pantauan', PantauanController::class);
+        Route::resource('adashboard', AdashboardController::class);
     });
 
     Route::prefix('dashboard')->name('user.dashboard.')->group(function () {
         Route::resource('gform', GformController::class);
+        Route::resource('laporankuisoner', UlaporanKuisonerController::class);
+        Route::resource('dashboard', DashboardController::class);
     });
 });

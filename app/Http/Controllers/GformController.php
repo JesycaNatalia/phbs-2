@@ -28,7 +28,7 @@ class GformController extends Controller
                 echo 'Kamu udah ngisi'; //nanti dibuatin view sendiri
             }
         } else {
-            echo 'Kuisoner belum tersedia';
+            return view('user.dashboard.gformkuisoner.detail2');
         }
     }
 
@@ -75,7 +75,7 @@ class GformController extends Controller
             'total_skor' => $total_skor,
         ]);
 
-        echo "Pengisian Berhasil!"; //buatin view lagi untuk ini
+        return view('user.dashboard.gformkuisoner.detail');
 
         // return redirect(route('user.dashboard.gform.index'))->with("OK", "Berhasil ditambahkan.");
     }

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\ResponUser;
+use App\Models\Kuisoner;
+use App\Models\Bulan;
 
-class GrafikController extends Controller
+class UlaporanKuisonerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +17,9 @@ class GrafikController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.grafik.index');
+        $kuisoner = Kuisoner::count();
+        $respon_user['respon_users'] = ResponUser::with('bulan')->where('user_id', Auth::user()->id)->get();
+        return view('user.dashboard.pantauan.index', $respon_user, compact('kuisoner'));
     }
 
     /**
@@ -45,7 +51,6 @@ class GrafikController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
