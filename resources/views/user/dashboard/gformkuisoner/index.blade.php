@@ -80,16 +80,6 @@
 
 @section('script')
 <script>
-    let total_skor = 0
-    @php $index=0 @endphp
-    @foreach($kuisoners as $kuisoner)
-        @php $index++ @endphp
-        $('input[type=radio][name=kuisoner{{$index}}]').change(function() {
-            total_skor = total_skor + parseFloat($('input[type=radio][name=kuisoner{{$index}}]').val());
-            $("#total_skor").val(total_skor);
-        });
-    @endforeach
-
     $(document).on("click", ".deleteButton", function() {
         let id = $(this).val();
 

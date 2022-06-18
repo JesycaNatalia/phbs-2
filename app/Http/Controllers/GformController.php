@@ -19,12 +19,16 @@ class GformController extends Controller
     public function index()
     {
         $bulan = Bulan::orderBy('id', 'desc')->first();
-        $respon_user = ResponUser::where([['bulan_id', $bulan->id], ['user_id', Auth::user()->id]])->first();
-        if ($respon_user == null) {
-            $kuisoner['kuisoners'] = Kuisoner::get();
-            return view('user.dashboard.gformkuisoner.index', $kuisoner);
+        if ($bulan != null) {
+            $respon_user = ResponUser::where([['bulan_id', $bulan->id], ['user_id', Auth::user()->id]])->first();
+            if ($respon_user == null) {
+                $kuisoner['kuisoners'] = Kuisoner::get();
+                return view('user.dashboard.gformkuisoner.index', $kuisoner);
+            } else {
+                echo 'Kamu udah ngisi'; //nanti dibuatin view sendiri
+            }
         } else {
-            echo 'Kamu udah ngisi'; //nanti dibuatin view sendiri
+            echo 'Kuisoner belum tersedia';
         }
     }
 
