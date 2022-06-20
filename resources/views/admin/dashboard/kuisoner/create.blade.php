@@ -43,20 +43,6 @@
                                         placeholder="e.g: Apakah kamu suka mencuci tangan?" required>
                                 </div>
                             </div>
-                            <div class="form-group mb-50">
-                                <div class="form-group mb-50">
-                                    <label class="text-bold-600">Status Cabang <span
-                                            class="text-danger">*</span></label>
-                                    <div class="row">
-                                        <div class="col-md-2"><input type="radio" name="status_pertanyaan" value="yes"
-                                                id="title" class="form-control" required> Ya</div>
-                                        <div class="col-md-2">
-                                            <input type="radio" name="status_pertanyaan" value="no" id="title"
-                                                class="form-control" required> Tidak
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group mb-50">

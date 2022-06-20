@@ -43,22 +43,6 @@
                                         value="{{ $kuisoner->pertanyaan }}">
                                 </div>
                             </div>
-                            <div class="form-group mb-50">
-                                <div class="form-group mb-50">
-                                    <label class="text-bold-600">Status Cabang <span
-                                            class="text-danger">*</span></label>
-                                    <div class="row">
-                                        <div class="col-md-4"><input type="radio" name="status_pertanyaan" value="yes"
-                                                id="title" class="form-control" required
-                                                @checked($kuisoner->status_pertanyaan == 'yes')> Ya</div>
-                                        <div class="col-md-4">
-                                            <input type="radio" name="status_pertanyaan"
-                                                @checked($kuisoner->status_pertanyaan == 'no') value="no" id="title"
-                                            class="form-control" required> Tidak
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group mb-50">

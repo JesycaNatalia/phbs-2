@@ -39,7 +39,6 @@ class KuisonerController extends Controller
     {
         Kuisoner::create([
             'pertanyaan' => $request->pertanyaan,
-            'status_pertanyaan' => $request->status_pertanyaan,
             'penjelasan' => $request->penjelasan ?? ''
         ]);
 
@@ -82,7 +81,6 @@ class KuisonerController extends Controller
         $kuisoner = Kuisoner::findOrFail($id);
         $kuisoner->update([
             'pertanyaan' => $request->pertanyaan,
-            'status_pertanyaan' => $request->status_pertanyaan,
         ]);
 
         return redirect()->back()->with("OK", "Berhasil diubah.");

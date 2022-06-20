@@ -47,11 +47,6 @@
                                 <tr>
                                     <td></td>
                                     <td>{{ $kuisoner->pertanyaan }}</td>
-                                    @if($kuisoner->status_pertanyaan == 'no')
-                                    <td style="color:red">Tidak</td>
-                                    @else
-                                    <td style="color:green">Ya</td>
-                                    @endif
                                     <td>
                                         <div class="btn-group btn-group-sm">
                                             <a href="{{ route('admin.dashboard.jawaban.show', $kuisoner->id) }}"
