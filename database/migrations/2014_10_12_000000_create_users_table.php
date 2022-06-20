@@ -16,12 +16,15 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('no_kk')->nullable();
+            $table->bigInteger('kartu_keluarga_id')->unsigned()->nullable();
+            $table->string('status_kepala')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('password');
             $table->string('role');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('kartu_keluarga_id')->references('id')->on('kartu_keluargas')->onDelete('cascade');
         });
     }
 

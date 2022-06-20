@@ -38,7 +38,6 @@
                                 <tr>
                                     <th style="width: 5%">No</th>
                                     <th>Pertanyaan</th>
-                                    <th style="width: 15%">Status Cabang</th>
                                     <th class="text-center" style="width: 15%">Aksi</th>
                                 </tr>
                             </thead>

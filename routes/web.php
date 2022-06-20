@@ -26,6 +26,8 @@ use App\Http\Controllers\PantauanController;
 // Route::resource('gform', GformController::class);
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/register', [LoginController::class, 'index_register'])->name('register')->middleware('guest');
+Route::post('/register', [LoginController::class, 'register']);
 
 Route::middleware(['auth'])->group(function () {
 

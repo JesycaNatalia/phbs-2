@@ -9,7 +9,7 @@
 @section('content')
 
 @php
-    $respon_users = $all_respon_users->where('user_id', Auth::user()->id); //ini aku taroh sini karna di view gabisa dikirim datanya untuk peruser
+    $respon_users = $all_respon_users->where('kartu_keluarga_id', Auth::user()->kartu_keluarga_id); //ini aku taroh sini karna di view gabisa dikirim datanya untuk peruser
 @endphp
 
 @if($status != null)
@@ -73,6 +73,7 @@
             </div>
         </div>
 
+        @if($respon_users != '[]')
         <div class="kotak col-xl-3 col-md-6">
             <div class="widget widget-stats bg-blue">
                 <br>
@@ -98,12 +99,27 @@
                 </div>
             </div>
         </div>
+        @else
+        <div class="kotak col-xl-3 col-md-6">
+            <div class="widget widget-stats bg-blue">
+                <br>
+                <div class="stats-info">
+                    <center>
+                        <h4>KATEGORI</h4> <!-- total berapa kali kepala keluarga isi kuisoner -->
+                        <hr>
+                        <h3>Keluarga Sehat</h3>
+                    </center>
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
 <br>
 <br>
 <br>
 
+@if($all_respon_users != '[]')
 <div class="container">
     @php 
     $sehat = 0;
@@ -158,6 +174,7 @@
         </div>
     </div>
 </div>
+@endif
 
 @endsection
 

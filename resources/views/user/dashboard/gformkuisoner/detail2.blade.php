@@ -10,12 +10,24 @@
 
 <div class="card">
     <div class="card-header">
-        Anda Sudah Isi Kuisoner Bulan Januari!
+        Anda Sudah Isi Kuisoner Bulan {{ $bulan->bulan }}!
     </div>
     <div class="card-body">
         <center>
             <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">Total Skor : 90 | Keluarga anda masuk kategori hidup sehat bulan januari </p>
+            @php 
+            $total_skor = $respon_users->last()->total_skor;
+            $perbandingan = ($kuisoner * 3) / 2; //ini *3 karna 3 adalah skor tertinggi dan dibagi 2 untuk menghitung nilai tengahnya buat jadi pacuan sehat dan tidak
+            $sehat = '';
+            
+            if($total_skor > $perbandingan ){
+                $sehat = 'Keluarga anda masuk kategori hidup sehat';
+            }else{
+                $sehat = 'Keluarga anda <b style="color:red">belum</b> masuk kategori hidup sehat';
+            }
+            
+            @endphp
+            <p class="card-text">Total Skor : {{$respon_users->last()->total_skor;}} | {!! $sehat !!} </p>
         </center>
         <a href="#" class="btn btn-primary">Kembali</a>
     </div>

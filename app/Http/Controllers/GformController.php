@@ -20,15 +20,21 @@ class GformController extends Controller
     {
         $bulan = Bulan::orderBy('id', 'desc')->first();
         if ($bulan != null) {
-            $respon_user = ResponUser::where([['bulan_id', $bulan->id], ['user_id', Auth::user()->id]])->first();
+            $respon_user = ResponUser::where([['bulan_id', $bulan->id], ['kartu_keluarga_id', Auth::user()->kartu_keluarga_id]])->first();
             if ($respon_user == null) {
                 $kuisoner['kuisoners'] = Kuisoner::get();
                 return view('user.dashboard.gformkuisoner.index', $kuisoner);
             } else {
-                echo 'Kamu udah ngisi'; //nanti dibuatin view sendiri
+                $bulan = Bulan::orderBy('id', 'desc')->first();
+                $kuisoner = Kuisoner::count();
+                $respon_user['respon_users'] = ResponUser::with('bulan')->where('kartu_keluarga_id', Auth::user()->kartu_keluarga_id)->get();
+                return view('user.dashboard.gformkuisoner.detail2', $respon_user, compact('kuisoner', 'bulan'));
             }
         } else {
-            return view('user.dashboard.gformkuisoner.detail2');
+            $bulan = Bulan::orderBy('id', 'desc')->first();
+            $kuisoner = Kuisoner::count();
+            $respon_user['respon_users'] = ResponUser::with('bulan')->where('kartu_keluarga_id', Auth::user()->kartu_keluarga_id)->get();
+            return view('user.dashboard.gformkuisoner.detail2', $respon_user, compact('kuisoner', 'bulan'));
         }
     }
 
@@ -64,18 +70,22 @@ class GformController extends Controller
                 ]);
             }
         }
-        $jawabans = JawabanUser::with('isi_kuisoner')->where('bulan_id', $bulan->id)->get();
+        $jawabans = JawabanUser::with('isi_kuisoner')->where([['bulan_id', $bulan->id], ['user_id', Auth::user()->id]])->get();
         $total_skor = 0;
         foreach ($jawabans as $jawaban) {
             $total_skor = $total_skor + $jawaban->isi_kuisoner->skor;
         }
         ResponUser::create([
             'bulan_id' => $bulan->id,
-            'user_id' => Auth::user()->id,
+            'kartu_keluarga_id' => Auth::user()->kartu_keluarga_id,
             'total_skor' => $total_skor,
         ]);
 
-        return view('user.dashboard.gformkuisoner.detail');
+        $bulan = Bulan::orderBy('id', 'desc')->first();
+        $kuisoner = Kuisoner::count();
+        $respon_user['respon_users'] = ResponUser::with('bulan')->where('kartu_keluarga_id', Auth::user()->kartu_keluarga_id)->get();
+
+        return view('user.dashboard.gformkuisoner.detail', $respon_user, compact('kuisoner', 'bulan'));
 
         // return redirect(route('user.dashboard.gform.index'))->with("OK", "Berhasil ditambahkan.");
     }
@@ -86,9 +96,11 @@ class GformController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($bulan_id)
     {
-        //
+        $jawaban_user['jawaban_users'] = JawabanUser::where('bulan_id', $bulan_id)->get();
+        $kuisoner['kuisoners'] = Kuisoner::get();
+        return view('user.dashboard.gformkuisoner.detail_jawaban', $kuisoner, $jawaban_user);
     }
 
     /**

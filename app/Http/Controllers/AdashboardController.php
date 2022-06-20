@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ResponUser;
+use App\Models\Kuisoner;
+use App\Models\User;
 
 class AdashboardController extends Controller
 {
@@ -13,7 +16,11 @@ class AdashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.dashboard.index');
+        
+        $user = User::count();
+        $kuisoner = Kuisoner::count();
+        $all_respon_user['all_respon_users'] = ResponUser::with('bulan')->get(); //ambil data dari bulan terbaru
+        return view('admin.dashboard.dashboard.index', $all_respon_user, compact('user', 'kuisoner'));
     }
 
     /**

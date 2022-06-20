@@ -67,7 +67,7 @@
 				@if(!request()->routeIs('admin*'))
 				<p>
 					<br />
-					Belum punya akun? <a href="">Mendaftar</a>
+					Belum punya akun? <a href="{{ route('register') }}">Mendaftar</a>
 					<br />
 					Lupa kata sandi? <a href="">Dapatkan kembali</a>
 				</p>

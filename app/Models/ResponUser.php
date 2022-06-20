@@ -11,7 +11,7 @@ class ResponUser extends Model
 
     protected $fillable = [
         'bulan_id',
-        'user_id',
+        'kartu_keluarga_id',
         'total_skor',
     ];
 

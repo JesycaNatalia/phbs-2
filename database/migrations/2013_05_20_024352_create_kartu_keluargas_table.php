@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKuisonersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateKuisonersTable extends Migration
      */
     public function up()
     {
-        Schema::create('kuisoners', function (Blueprint $table) {
+        Schema::create('kartu_keluargas', function (Blueprint $table) {
             $table->id();
-            $table->string('pertanyaan');
-            $table->text('penjelasan')->nullable();
+            $table->bigInteger('no_kk');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateKuisonersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kuisoners');
+        Schema::dropIfExists('kartu_keluargas');
     }
-}
+};
