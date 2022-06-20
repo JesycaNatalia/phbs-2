@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\KartuKeluarga;
+use App\Models\StatusKeluarga;
 use App\Models\Kuisoner;
 
 class LoginController extends Controller
@@ -49,13 +50,18 @@ class LoginController extends Controller
             $kartu_keluarga = $data_kk;
         }
 
-        User::create([
+        $user = User::create([
             'nama' => $request->nama,
             'kartu_keluarga_id' => $kartu_keluarga->id,
             'status_kepala' => $request->status_kepala,
             'jenis_kelamin' => $request->jenis_kelamin,
             'password' => bcrypt($request->password),
             'role' => 'user'
+        ]);
+
+        StatusKeluarga::create([
+           'kartu_keluarga_id' => $kartu_keluarga->id,  
+           'user_id' => $user->id,
         ]);
 
         return view('auth.login');

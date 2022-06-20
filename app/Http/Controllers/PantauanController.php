@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ResponUser;
+use App\Models\User;
+use App\Models\JawabanUser;
+use App\Models\KartuKeluarga;
+use App\Models\Kuisoner;
+use App\Models\StatusKeluarga;
 
 class PantauanController extends Controller
 {
@@ -13,7 +19,10 @@ class PantauanController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.pantauan.index');
+        $kuisoner = Kuisoner::count();
+        $user = User::whereHas('kartu_keluarga')->get();
+        $respon_user['respon_users'] = ResponUser::with('bulan', 'kartu_keluarga.status_keluarga')->get();
+        return view('admin.dashboard.pantauan.index', $respon_user, compact('kuisoner', 'user'));
     }
 
     /**
@@ -43,9 +52,17 @@ class PantauanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($bulan_id, Request $request)
     {
-        // 
+        $user_id = $request->user_id;
+        $keluargas = StatusKeluarga::where('kartu_keluarga_id' , $user_id)->get();
+        foreach($keluargas as $keluarga){
+            $jawaban_user['jawaban_users'] = JawabanUser::with('isi_kuisoner')->where([['bulan_id', $bulan_id], ['user_id', $keluarga->user_id]])->get();
+            if($jawaban_user['jawaban_users'] != null){
+                $kuisoner['kuisoners'] = Kuisoner::get();
+                return view('user.dashboard.gformkuisoner.detail_jawaban', $kuisoner, $jawaban_user);
+            }
+        }
     }
 
     /**

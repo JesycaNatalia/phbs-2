@@ -44,17 +44,42 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($respon_users as $respon_user)
+                                @php 
+                                $total_skor = $respon_user->total_skor;
+                                $perbandingan = ($kuisoner * 3) / 2; //ini *3 karna 3 adalah skor tertinggi dan dibagi 2 untuk menghitung nilai tengahnya buat jadi pacuan sehat dan tidak
+                                @endphp
                                 <tr>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td>
-                                        <a href="" class="btn btn-info">Detail</a>
+                                        @foreach($respon_user->kartu_keluarga->status_keluarga as $keluarga) 
+                                        @if($keluarga->user->status_kepala == 'ya')
+                                            {{$keluarga->user->nama}}
+                                        @endif
+                                        @endforeach
+                                    </td>
+                                    <td>{{ $respon_user->kartu_keluarga->no_kk }}</td>
+                                    <td>{{ $respon_user->bulan->bulan }}</td>
+                                    <td>{{ $respon_user->total_skor }}</td>
+                                    <td>
+                                        @php
+                                        $total_skor = $respon_user->total_skor;
+                                        $perbandingan = ($kuisoner * 3) / 2; //ini *3 karna 3 adalah skor tertinggi dan dibagi 2 untuk menghitung nilai tengahnya buat jadi pacuan sehat dan tidak
+                                        $sehat = '';
+                                        
+                                        if($total_skor > $perbandingan ){
+                                            $sehat = 'Sehat';
+                                        }else{
+                                            $sehat = 'Belum Sehat';
+                                        }
+                                        @endphp
+                                        {{$sehat}}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('admin.dashboard.pantauan.show', $respon_user->bulan->id) }}?user_id={{ $respon_user->kartu_keluarga_id }}" class="btn btn-info">Detail</a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

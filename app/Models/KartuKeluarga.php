@@ -12,4 +12,14 @@ class KartuKeluarga extends Model
     protected $fillable = [
         'no_kk',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function status_keluarga()
+    {
+        return $this->hasMany('App\Models\StatusKeluarga');
+    }
 }
