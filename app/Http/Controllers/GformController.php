@@ -98,7 +98,7 @@ class GformController extends Controller
      */
     public function show($bulan_id)
     {
-        $jawaban_user['jawaban_users'] = JawabanUser::where('bulan_id', $bulan_id)->get();
+        $jawaban_user['jawaban_users'] = JawabanUser::with('isi_kuisoner')->where([['bulan_id', $bulan_id], ['user_id', Auth::user()->id]])->get();
         $kuisoner['kuisoners'] = Kuisoner::get();
         return view('user.dashboard.gformkuisoner.detail_jawaban', $kuisoner, $jawaban_user);
     }

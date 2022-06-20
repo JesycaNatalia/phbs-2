@@ -29,12 +29,21 @@
                     </tr>
                     <tr>
                         <td>
+                            
+                            @php
+                            $jawabanuser = ''
+                            @endphp
+                            @foreach ($jawaban_users as $jawaban_user)
+                                @php 
+                                if($jawaban_user->kuisoner_id == $kuisoner->id){
+                                    $jawabanuser = $jawaban_user->isi_kuisoner->id;
+                                } 
+                                @endphp
+                            @endforeach
                             @foreach($kuisoner->jawaban as $jawaban)
-                            {{$jawaban_users->where('user_id', Auth::user()->id)}}
-                            <p><input type='radio' name='{{$kuisoner->id}}' value='{{$jawaban->id}}' required />
+                            <p><input type='radio' name='{{$kuisoner->id}}' value='{{$jawaban->id}}' @checked($jawabanuser == $jawaban->id) disabled required />
                                 {{$jawaban->jawaban}}
                             </p>
-                            
                             @endforeach
                         </td>
                     </tr>
